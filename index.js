@@ -34,6 +34,15 @@ app.set('views', path.join(__dirname, 'views'));
 //add views template engine
 app.set('view engine', 'ejs');
 
+app.get ('/questions', (reg, res) => {
+    let questions = [
+        {title:"What is node.js", user : "Kadi", votes: "10"},
+        {title:"What is express.js", user : "Madli", votes: "8"},
+        {title:"What color is love?", user : "Vadli", votes: "1"}
+    ]
+    res.render('index', {questions:questions})
+})
+
 app.get ('/user/:username', (reg, res)=>{
     let user = reg.params.username;
     res.render('index', {username: user});
