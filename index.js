@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path')
+const login = require('login')
 
 app.get('/', (reg, res)=> {
     //create html response
@@ -33,6 +34,10 @@ app.use(express.static('public_html'));
 app.set('views', path.join(__dirname, 'views'));
 //add views template engine
 app.set('view engine', 'ejs');
+
+app.get('/login', (reg, res)=> {
+    res.render('login')
+}
 
 app.get ('/questions', (reg, res) => {
     let questions = [
