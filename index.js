@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+let path;
+//let join;
 
 app.get('/', (reg, res)=> {
     //create html response
@@ -28,10 +30,14 @@ app.get('/about', (reg, res)=> {
 
 //add public directory
 app.use(express.static('public_html'));
+//add views directory path
+app.set('views', path.join(__dirname, 'views'));
+//add views template engine
+app.set('view engine', 'ejs');
 
 app.get ('/user/:username', (reg, res)=>{
     let user = reg.params.username;
-    res.render('index.ejs', {username: user});
+    res.render('index', {username: user});
 });
 
 app.listen (3000, ()=>{
