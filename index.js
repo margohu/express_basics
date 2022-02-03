@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express');
 const app = express();
 
 app.get('/', (reg, res)=> {
@@ -16,11 +16,21 @@ app.get('/about', (reg, res)=> {
     res.send ('<h1>About us page</h1>')
 });
 
-app.get('*', (reg, res)=> {
+//app.get('*', (reg, res)=> {
     //create html response
-    res.send ('404. This page does not exist. <a href="/">Go to home page</a>')
+//    res.send ('404. This page does not exist. <a href="/">Go to home page</a>')
+//});
+
+
+//app.get('/demo', (reg, res)=> {
+  //  res.render('index.ejs')
+//});
+
+app.get ('/user/:username', (reg, res)=>{
+    let user = reg.params.username;
+    res.render('index.ejs', {username: user});
 });
 
-app.listen( 3000, ()=> {
-    console.log('Server started on http://localhost/3000');
+app.listen (3000, ()=>{
+    console.log('Server started on http://localhost:3000')
 })
