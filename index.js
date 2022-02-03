@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
-let path;
-//let join;
+const path = require('path')
 
 app.get('/', (reg, res)=> {
     //create html response
