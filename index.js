@@ -26,6 +26,9 @@ app.get('/about', (reg, res)=> {
   //  res.render('index.ejs')
 //});
 
+//add public directory
+app.use(express.static('public_html'));
+
 app.get ('/user/:username', (reg, res)=>{
     let user = reg.params.username;
     res.render('index.ejs', {username: user});
